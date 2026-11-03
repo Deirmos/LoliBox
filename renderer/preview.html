@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LoliBox (preview)</title>
+    <script>
+      (function () {
+        const tracks = [
+          { id: 'yt_a1', title: 'Sewerslvt - With You Forever', artist: 'Sewerslvt', source: 'youtube', source_url: 'https://www.youtube.com/watch?v=a1', duration: 249, thumbnail: 'https://i.ytimg.com/vi/a1/mqdefault.jpg' },
+          { id: 'yt_a2', title: 'Sewerslvt - Kawaii Razor Blades (feat. yandere)', artist: 'Sewerslvt', source: 'youtube', source_url: 'https://www.youtube.com/watch?v=a2', duration: 339, thumbnail: 'https://i.ytimg.com/vi/a2/mqdefault.jpg' },
+          { id: 'yt_long', title: 'Sewerslvt - Draining Love Story (FULL ALBUM STREAM)', artist: 'Sewerslvt', source: 'youtube', source_url: 'https://www.youtube.com/watch?v=long', duration: 3518, thumbnail: 'https://i.ytimg.com/vi/long/mqdefault.jpg' },
+        ];
+        const membership = { yt_a1: [1] };
+        window.lolibox = {
+          checkNetwork: async () => ({ online: true }),
+          onNetworkStatus: () => {}, removeNetworkListener: () => {},
+          getAllTracks: async () => tracks,
+          getPlaylists: async () => [{ id: 1, name: 'Избранное', is_default: 1 }],
+          getPlaylistTracks: async () => tracks.filter((t) => membership[t.id]),
+          getPlaylistMembership: async () => membership,
+          getTrackPlaylists: async () => [1],
+          getSettings: async () => ({ theme: 'lolibox', volume_normalization: '1' }),
+          setSetting: async () => ({ success: true }),
+          getVolume: async () => 0.2,
+          setVolume: async () => ({ success: true }),
+          searchArtistTracks: async () => tracks,
+          getStreamUrl: async () => '',
+          analyzeLoudness: async () => ({ success: false }),
+          getLoudnessStatus: async () => ({ available: false }),
+          windowIsMaximized: async () => false,
+          onWindowMaximized: () => {}, removeWindowListeners: () => {},
+          setTrayState: () => {},
+          onTrayCommand: () => {}, removeTrayCommandListeners: () => {},
+        };
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/preview-entry.jsx"></script>
+  </body>
+</html>

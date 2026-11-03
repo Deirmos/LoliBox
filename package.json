@@ -1,0 +1,100 @@
+{
+  "name": "lolibox",
+  "productName": "LoliBox",
+  "version": "1.0.10",
+  "description": "LoliBox — десктопный музыкальный плеер для YouTube Music и SoundCloud",
+  "main": "main/index.js",
+  "author": "Deimon",
+  "license": "GPL-3.0-only",
+  "homepage": "https://github.com/Deirmos/LoliBox#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Deirmos/LoliBox.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Deirmos/LoliBox/issues"
+  },
+  "scripts": {
+    "dev": "concurrently \"npm:vite\" \"npm:electron-dev\"",
+    "vite": "vite",
+    "electron-dev": "electron main/index.js --dev",
+    "build": "vite build",
+    "start": "electron main/index.js",
+    "pack": "npm run build && electron-builder --dir",
+    "dist": "npm run build && electron-builder --win nsis",
+    "dist:portable": "npm run build && electron-builder --win portable",
+    "dist:all": "npm run build && electron-builder --win nsis portable"
+  },
+  "keywords": [
+    "music",
+    "player",
+    "youtube",
+    "soundcloud",
+    "electron",
+    "lolibox"
+  ],
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.2.0",
+    "concurrently": "^8.2.2",
+    "electron": "^29.0.0",
+    "electron-builder": "^25.1.8",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.20.0",
+    "vite": "^5.0.0"
+  },
+  "build": {
+    "appId": "com.deimon.lolibox",
+    "productName": "LoliBox",
+    "copyright": "Copyright © 2026 Deimon",
+    "directories": {
+      "output": "release",
+      "buildResources": "build"
+    },
+    "files": [
+      "main/**/*",
+      "preload/**/*",
+      "dist/**/*",
+      "assets/**/*",
+      "package.json"
+    ],
+    "extraResources": [
+      {
+        "from": "resources/bin",
+        "to": "bin",
+        "filter": [
+          "**/*"
+        ]
+      }
+    ],
+    "win": {
+      "icon": "assets/icon.ico",
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "artifactName": "LoliBox-Setup-${version}.${ext}"
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowElevation": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "LoliBox",
+      "menuCategory": false,
+      "include": "build/lolibox.nsh",
+      "installerLanguages": [
+        "ru_RU",
+        "en_US"
+      ],
+      "displayLanguageSelector": true,
+      "deleteAppDataOnUninstall": false
+    }
+  }
+}
