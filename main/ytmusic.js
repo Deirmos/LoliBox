@@ -8,7 +8,6 @@ const {
 const cache = require('./cache');
 
 const MUSIC_ORIGIN = 'https://music.youtube.com';
-const FALLBACK_KEY = 'AIzaSyC9XL3ZjWddXya6X74dJoCTL-WEYFDNX30';
 const FALLBACK_VERSION = '1.20240101.01.00';
 const USER_AGENT =
   'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36';
@@ -136,7 +135,7 @@ function walkJson(value, cb) {
 async function getClientConfig() {
   if (clientConfig && clientConfig.expiresAt > Date.now()) return clientConfig;
 
-  let key = FALLBACK_KEY;
+  let key = null;
   let version = FALLBACK_VERSION;
   const controller = new AbortController();
   const timer = setTimeout(() => controller.abort(), 12000);
@@ -155,6 +154,10 @@ async function getClientConfig() {
   } catch (e) {
   } finally {
     clearTimeout(timer);
+  }
+
+  if (!key) {
+    throw new Error('YouTube Music: не удалось получить API-ключ');
   }
 
   clientConfig = {
