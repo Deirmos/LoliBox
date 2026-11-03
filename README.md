@@ -9,7 +9,7 @@
   <img alt="License" src="https://img.shields.io/badge/license-GPL--3.0-blue" />
 </p>
 
-![Моя волна — персональные рекомендации](docs/screenshots/wave.png)
+![Моя волна — персональные рекомендации](docs/screenshots/01-wave.png)
 
 ## Возможности
 
@@ -23,15 +23,15 @@
 - **Автоустановка компонентов** — yt-dlp и ffmpeg можно скачать прямо из настроек приложения.
 
 <p>
-  <img src="docs/screenshots/search.png" alt="Поиск музыки" width="49%" />
-  <img src="docs/screenshots/playlists.png" alt="Плейлисты" width="49%" />
+  <img src="docs/screenshots/02-search.png" alt="Поиск музыки" width="49%" />
+  <img src="docs/screenshots/03-playlists.png" alt="Плейлисты" width="49%" />
 </p>
 <p>
-  <img src="docs/screenshots/blacklist-tracks.png" alt="Чёрный список — треки" width="49%" />
-  <img src="docs/screenshots/blacklist-artists.png" alt="Чёрный список — авторы" width="49%" />
+  <img src="docs/screenshots/04-blacklist-tracks.png" alt="Чёрный список — треки" width="49%" />
+  <img src="docs/screenshots/05-blacklist-artists.png" alt="Чёрный список — авторы" width="49%" />
 </p>
 <p>
-  <img src="docs/screenshots/settings.png" alt="Настройки" width="100%" />
+  <img src="docs/screenshots/06-settings.png" alt="Настройки" width="100%" />
 </p>
 
 ## Установка
